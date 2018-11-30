@@ -6,6 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from fake_useragent.fake import UserAgent
 
 
 class QimairatingSpiderMiddleware(object):
@@ -101,3 +102,9 @@ class QimairatingDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class QimaiHeader(object):
+    def process_request(self, request, spider):
+        request.headers['Referer'] = 'https://www.qimai.cn/app/comment/appid/1084660392/country/cn'
+        request.headers['User-Agent'] = UserAgent().random

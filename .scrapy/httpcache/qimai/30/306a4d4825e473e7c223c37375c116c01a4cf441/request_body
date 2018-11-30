@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en",
+        "Cookie": "synct=1543481088.344",
+        "User-Agent": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+    },
+    "url": "https://www.qimai.cn/app/comment/appid/1084660392/country/cn",
+    "wait": 5
+}

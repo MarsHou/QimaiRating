@@ -1,0 +1,13 @@
+Date: Fri, 30 Nov 2018 02:46:35 GMT
+Content-Type: application/json; charset=utf-8
+Server: nginx/1.14.0
+X-Powered-By: PHP/7.0.29
+Access-Control-Expose-Headers: Server-U, Server-Time
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: https://www.qimai.cn
+Set-Cookie: PHPSESSID=485tbc9c2rrl4sbmi65934cms7; path=/; domain=qimai.cn
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Server-Time: 1543545995000
+Content-Encoding: gzip
