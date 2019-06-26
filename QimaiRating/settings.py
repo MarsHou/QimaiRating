@@ -47,9 +47,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'QimaiRating.middlewares.QimairatingSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   # 'QimaiRating.middlewares.QimairatingSpiderMiddleware': 543,
+}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
@@ -92,23 +92,23 @@ DOWNLOADER_MIDDLEWARES = {
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 
-# # 添加splash服务器地址
-# SPLASH_URL = 'http://localhost:8050'
-#
-# # 将splash middleware添加到DOWNLOADER_MIDDLEWARE中
-# DOWNLOADER_MIDDLEWARES = {
-#     'scrapy_splash.SplashCookiesMiddleware': 723,
-#     'scrapy_splash.SplashMiddleware': 725,
-#     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-# }
-#
-# # Enable SplashDeduplicateArgsMiddleware
-# SPIDER_MIDDLEWARES = {
-#     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
-# }
-#
-# # Set a custom DUPEFILTER_CLASS
-# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-#
-# # a custom cache storage backend
-# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+# 添加splash服务器地址
+SPLASH_URL = 'http://localhost:8050'
+
+# 将splash middleware添加到DOWNLOADER_MIDDLEWARE中
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
+
+# Enable SplashDeduplicateArgsMiddleware
+SPIDER_MIDDLEWARES = {
+    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+}
+
+# Set a custom DUPEFILTER_CLASS
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+
+# a custom cache storage backend
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
