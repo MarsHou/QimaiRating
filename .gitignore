@@ -1,4 +1,5 @@
 .idea/
 .scrapy/
 venv/
+give_rating_*.html
 *.pyc

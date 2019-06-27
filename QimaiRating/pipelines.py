@@ -6,8 +6,6 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import time
 
-from idna import unicode
-
 STYLE = r"""<style type="text/css">
 table.app_info {
         margin: 0 auto;
@@ -69,6 +67,7 @@ table.app_info {
     .author {
         font-size: 12px;
         color: #666666;
+        margin-left: 20px;
     }
 
     a {
@@ -116,16 +115,16 @@ class QimairatingPipeline(object):
         recent_data = self.all_data['recent_data']
         help_data = self.all_data['help_data']
         file_name = 'give_rating_%s.html' % (time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
-        file_out = open(file_name, 'w')
+        file_out = open(file_name, 'w', encoding='utf-8')
         file_out.write(r'''<meta http-equiv=Content-Type content="text/html;charset=utf-8">
                 <html>
                 %s
                 <body>
                 ''' % STYLE)
-        file_out.write((r'''
+        file_out.write(r'''
         <h3>%s</h3>
-        ''' % app_info['app_name']).encode('utf-8'))
-        file_out.write(unicode(r'''
+        ''' % app_info['app_name'])
+        file_out.write(r'''
         <div>
     <table class="app_info">
         <tr>
@@ -143,15 +142,14 @@ class QimairatingPipeline(object):
     </table>
 </div>
 <div class="star">
-        ''' % (app_info['app_author'], app_info['app_id'], app_info['app_price'], app_info['app_last_version'])).encode(
-            'utf-8'))
+        ''' % (app_info['app_author'], app_info['app_id'], app_info['app_price'], app_info['app_last_version']))
         for rate in rate_list:
-            file_out.write(unicode(r'''
+            file_out.write(r'''
             <span class="header">%s</span>
     <span class="score">%s</span>
     <span class="score_num">%s</span>
     <br/>
-            ''' % (rate['score_header'], rate['score_star'], rate['comment_num'])).encode('utf-8'))
+            ''' % (rate['score_header'], rate['score_star'], rate['comment_num']))
         file_out.write(r'''
         </div>
 <h4>MOST RECENT</h4>
@@ -192,7 +190,7 @@ class QimairatingPipeline(object):
         return file_name
 
     def get_tr_content(self, data, no):
-        return unicode(r"""<tr onmouseover="this.style.backgroundColor='#ebf7ff';"
+        return r"""<tr onmouseover="this.style.backgroundColor='#ebf7ff';"
         onmouseout="this.style.backgroundColor='#ffffff';">
         <td>%s</td>
         <td>
@@ -211,4 +209,4 @@ class QimairatingPipeline(object):
     </tr>""" % (
             no, data['title'], data['author_href'], data['author'], data['deleted'], data['content'],
             data['publish_time'],
-            data['rate'])).encode('utf-8')
+            data['rate'])

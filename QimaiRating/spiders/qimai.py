@@ -77,13 +77,14 @@ class QimaiSpider(scrapy.Spider):
                 tr_comment.xpath('.//span[@class="author"]/a/@href').extract_first())
             comment_info['rate'] = tr_comment.xpath('.//input/@value').extract_first()
             comment_info['publish_time'] = tr_comment.xpath('.//td/div/span/text()').extract_first()
-            comment_info['deleted'] = tr_comment.xpath('.//i[@style="display:inline-block"]/text()').extract_first()
+            deleted = tr_comment.xpath('.//i[@style="display:inline-block"]/text()').extract_first()
+            comment_info['deleted'] = "" if deleted is None else deleted
             if self.query_type.__len__() == 0:
                 comment_info['type'] = 2
             else:
                 comment_info['type'] = 3
             yield comment_info
-        if next_text is None and self.page_no < 2:
+        if next_text is None and self.page_no < 4:
             self.page_no += 1
             yield SplashRequest(self.url, self.parse_comment, endpoint="execute",
                                 args={'lua_source': page_no_lua % (self.query_type, int(self.page_no)), 'url': self.url,
@@ -110,13 +111,14 @@ class QimaiSpider(scrapy.Spider):
                 tr_comment.xpath('.//span[@class="author"]/a/@href').extract_first())
             comment_info['rate'] = tr_comment.xpath('.//input/@value').extract_first()
             comment_info['publish_time'] = tr_comment.xpath('.//td/div/span/text()').extract_first()
-            comment_info['deleted'] = tr_comment.xpath('.//i[@style="display:inline-block"]/text()').extract_first()
+            deleted = tr_comment.xpath('.//i[@style="display:inline-block"]/text()').extract_first()
+            comment_info['deleted'] = "" if deleted is None else deleted
             if self.query_type.__len__() == 0:
                 comment_info['type'] = 2
             else:
                 comment_info['type'] = 3
             yield comment_info
-        if next_text is None and self.page_no < 2:
+        if next_text is None and self.page_no < 4:
             self.page_no += 1
             yield SplashRequest(self.url, self.parse_comment, endpoint="execute",
                                 args={'lua_source': page_no_lua % (self.query_type, int(self.page_no)), 'url': self.url,
